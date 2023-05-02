@@ -8,12 +8,8 @@ data.pop(lastnone)
 file.close()
 
 def print_table():  
-      connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+      connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
       with connection:
         cur = connection.cursor()
         cur.execute("SELECT * FROM profil")
@@ -24,12 +20,8 @@ def print_table():
         print("Phone: ",row[2])
 def lastid():
     l = []
-    connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+    connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
     with connection:
         cur = connection.cursor()
         cur.execute("SELECT * FROM profil")
@@ -39,12 +31,8 @@ def lastid():
     return max(l,default=0)
 def retid(name):
 
-    connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+    connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
     with connection:
         cur = connection.cursor()
         cur.execute("SELECT * FROM profil")
@@ -54,12 +42,8 @@ def retid(name):
             return row[0]
 def retidl(namelist):
     ln = []
-    connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+    connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
     with connection:
         cur = connection.cursor()
         cur.execute("SELECT * FROM profil")
@@ -71,12 +55,8 @@ def retidl(namelist):
     return ln
 def deleteData(id):
     try:
-        connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+        connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
         cursor = connection.cursor()
         sql_delete_query = """Delete from profil where id = %s""" 
         cursor.execute(sql_delete_query, id,)
@@ -95,12 +75,8 @@ def deleteData(id):
 
 def bulkInsert(records):
     try:
-        connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+        connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
         cursor = connection.cursor()
         sql_insert_query = """ INSERT INTO profil (id, name, phone) VALUES (%s,%s,%s) """
 
@@ -117,33 +93,21 @@ def bulkInsert(records):
             connection.close()
             print("PostgreSQL connection is closed")
 def CheckN(name):
-    conn = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+    connectionn = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
     cur = conn.cursor()
     cur.execute("SELECT id FROM profil WHERE name = %s", (name,))
     return cur.fetchone() is not None
 def Check(ID):
-    conn = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+    connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
     cur = conn.cursor()
     cur.execute("SELECT id FROM profil WHERE id = %s", (ID,))
     return cur.fetchone() is not None
 def update(records):
     try:
-        connection = psycopg2.connect(    
-            database="firstdb",
-            user="postgres",
-            password="4PraeToriaN4",
-            host="localhost",
-            port="5432")
+        connection = psycopg2.connect("dbname=suppliers user=postgres password=aral2197")
+
         cursor = connection.cursor()
         sql_update_query = """ UPDATE profil SET  name = %s, phone = %s WHERE id = %s;
                             """
